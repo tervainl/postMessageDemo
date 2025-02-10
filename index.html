@@ -17,7 +17,6 @@
     <button id="sendMessage">傳送訊息</button>
 
     <script>
-      let messageSent = false; // 是否已發送
 
       document
         .getElementById("sendMessage")
@@ -26,7 +25,6 @@
           if (window.opener) {
             console.log(window.opener);
             window.opener.postMessage(message, "https://cdpn.io");
-            messageSent = true; // 訊息已發送，設置標誌
             alert("訊息已傳送：" + message);
           } else {
             alert("無法找到 opener，請確保此頁是由另一個頁面開啟的。");
@@ -36,7 +34,7 @@
       // 當頁面準備關閉時發送通知
       window.onbeforeunload = function () {
         if (window.opener) {
-          window.opener.postMessage("第二個頁面已關閉", "https://cdpn.io");
+          window.opener.postMessage("第二個頁面已關閉", "*");
         }
       };
     </script>
