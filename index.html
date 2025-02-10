@@ -35,8 +35,8 @@
 
       // 當頁面準備關閉時發送通知
       window.onbeforeunload = function () {
-        if (window.opener && !messageSent) {
-          window.opener.postMessage("第二個頁面已關閉", "*");
+        if (window.opener) {
+          window.opener.postMessage("第二個頁面已關閉", "https://cdpn.io");
         }
       };
     </script>
